@@ -6,6 +6,7 @@ const createToken = async (customer) => {
     return token;
 }
 const createCustomer = async (req, res) => {
+    console.log('reating3')
     const {name, email, password, address} = req.body;
     try {
        const newCustomer = new Customer({

@@ -6,6 +6,7 @@ const instance = axios.create({
 
 const createCustomer = async (customer) => {
     try {
+        console.log('customer-create1')
         const {data} = await instance.post('/customers',{
             name: customer.name,
             address: customer.address,

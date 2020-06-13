@@ -1,6 +1,7 @@
 const { registerUser, fetchUsers, login } = require("../users");
 const customerResolvers = require("./customers");
 const productResolvers = require("./products");
+const OrderResolvers = require('./orders')
 
 const userResolvers = {
   Query: {
@@ -27,5 +28,6 @@ const resolvers = {
   ...userResolvers,
   ...customerResolvers,
   ...productResolvers,
+  ...OrderResolvers
 };
 module.exports = resolvers;

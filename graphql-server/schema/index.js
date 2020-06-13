@@ -3,6 +3,7 @@ const { mergeTypeDefs } = require("@graphql-tools/merge");
 
 const customerTypeDefs = require("./customers");
 const productTypeDefs = require("./products");
+const OrderTypeDefs = require('./orders')
 
 const userTypeDefs = gql`
   type Query {
@@ -33,6 +34,6 @@ const userTypeDefs = gql`
     age: Int
   }
 `;
-const types = [userTypeDefs, customerTypeDefs, productTypeDefs];
+const types = [userTypeDefs, customerTypeDefs, productTypeDefs, OrderTypeDefs];
 
 module.exports = mergeTypeDefs(types, { all: true });
