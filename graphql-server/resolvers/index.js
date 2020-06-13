@@ -25,9 +25,17 @@ const userResolvers = {
   },
 };
 const resolvers = {
-  ...userResolvers,
-  ...customerResolvers,
-  ...productResolvers,
-  ...OrderResolvers
+  Query: {
+    ...userResolvers.Query,
+    ...customerResolvers.Query,
+    ...productResolvers.Query,
+    ...OrderResolvers.Query,
+  },
+  Mutation: {
+    ...userResolvers.Mutation,
+    ...customerResolvers.Mutation,
+    ...productResolvers.Mutation,
+    ...OrderResolvers.Mutation
+  }
 };
 module.exports = resolvers;

@@ -13,6 +13,8 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=>
         console.log('---Successfully connected to customer db');
     }
 })
+mongoose.set('useCreateIndex', true);
+
 const app = express();
 app.use(cors());
 

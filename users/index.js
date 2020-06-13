@@ -6,13 +6,14 @@ const mongoose = require('mongoose');
 
 const port = process.env.USER_SERVICE_PORT || 3000;
 const url = process.env.USER_DB_URL || 'mongodb://localhost:27017/workshop-user-db';
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=> {
+mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true }, (err)=> {
     if(err){
         console.error('---Error connecting to user db');
     }else{
         console.log('---Successfully connected to user db');
     }
 })
+mongoose.set('useCreateIndex', true);
 const app = express();
 app.use(cors());
 
