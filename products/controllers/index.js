@@ -31,6 +31,7 @@ const fetchAllProducts = async (req, res) => {
 
 const fetchProductById = async (req, res) => {
   const id = req.params.id;
+  console.log("fetching product for ", id);
   try {
     const product = await Product.findOne({ _id: id });
     res.status(200).send(product);

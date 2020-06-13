@@ -13,10 +13,14 @@
   "dependencies": {
     "apollo-server": "^2.14.4",
     "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "graphql": "^15.1.0",
     "graphql-redis-subscriptions": "^2.2.1",
     "graphql-tools": "^6.0.9",
     "jsonwebtoken": "^8.5.1",
     "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
