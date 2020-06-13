@@ -1,6 +1,9 @@
 const {gql} = require('apollo-server');
+const { mergeTypeDefs } = require('@graphql-tools/merge');
 
-const typeDefs = gql`
+const customerTypeDefs = require('./customers')
+
+const userTypeDefs = gql`
     type Query {
         users: [User]
     }
@@ -10,7 +13,7 @@ const typeDefs = gql`
         login(user: LoginInput): String
     }
 
-    
+
 
     input UserInput {
         name: String
@@ -31,5 +34,9 @@ const typeDefs = gql`
         age: Int
     }
 `;
+const types = [
+  userTypeDefs,
+  customerTypeDefs,
+];
 
-module.exports =typeDefs;
+module.exports = mergeTypeDefs(types, { all: true });;

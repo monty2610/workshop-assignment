@@ -1,10 +1,11 @@
 const {registerUser, fetchUsers, login} = require('../users')
-const resolvers = {
+const customerResolvers = require('./customers')
+const userResolvers = {
     Query: {
         users: (parent, args, context) => {
             const {me} = context;
             console.log('---me----',me);
-            
+
           const users =   fetchUsers();
           return users;
         }
@@ -19,7 +20,7 @@ const resolvers = {
             return token;
         }
     },
-    
-}
 
+}
+const resolvers = {...userResolvers, ...customerResolvers}
 module.exports = resolvers;
