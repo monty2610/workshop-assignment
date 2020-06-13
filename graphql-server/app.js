@@ -1,6 +1,10 @@
 const {ApolloServer} = require('apollo-server');
+const { mergeSchemas} = require('graphql-tools');
 const typeDefs = require('./schema');
+const customerTypeDefs = require('./schema/customers')
+
 const resolvers = require('./resolvers');
+const customerResolvers = require('./resolvers/customers')
 const jwt = require('jsonwebtoken');
 
 const getLoggedInUser = (req) => {
@@ -13,9 +17,17 @@ const getLoggedInUser = (req) => {
         }
     }
 }
+
+const schema = mergeSchemas({
+    schemas: [typeDefs, customerTypeDefs],
+});
+const mergedResolvers = {
+    ...resolvers,
+    ...customerResolvers
+}
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schemas,
+    mergedResolvers,
     context: async ({req}) => ({
         me: getLoggedInUser(req)
     })
